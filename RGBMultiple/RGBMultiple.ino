@@ -53,7 +53,9 @@ void loop()
 //  delay(2000);
   
   int ledNumber = random(0, 4);
-  oneFlash(ledNumber, 1000);
+  int timeOn = random(900, 1201);
+//  oneFlash(ledNumber, timeOn);
+  allFlash(timeOn);
   delay(1);
 }
 
@@ -65,6 +67,23 @@ void oneFlash(int ledNumber, int delayTime)
   setLedColorOn(ledSet[ledNumber]);  
   delay(delayTime);
   turnLedOff(ledSet[ledNumber]);
+}
+
+void allFlash(int delayTime)
+{
+  setGlobalRGBarray2randomBrightColor();
+  
+  setLedColorOn(ledSet[0]);
+  setLedColorOn(ledSet[1]);
+  setLedColorOn(ledSet[2]);
+  setLedColorOn(ledSet[3]);
+  
+  delay(delayTime);
+  
+  turnLedOff(ledSet[0]);
+  turnLedOff(ledSet[1]);
+  turnLedOff(ledSet[2]);
+  turnLedOff(ledSet[3]);
 }
 
 void turnLedOff(int ledNumber)
@@ -107,7 +126,7 @@ void setLedColorOn(int ledPrimer)
 
 void setGlobalRGBarray2randomBrightColor()
 {
- int color1 = random(0, 256);
+  int color1 = random(0, 256);
   int color2 = 256 - color1;
   
   int select = random(0, 3);
