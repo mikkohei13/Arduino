@@ -49,17 +49,38 @@ void setup()
 
 void loop()
 {
-//  rotateColors(50);  
-//  delay(2000);
+
+  fadeLed(2);
   
+  
+  
+/*  
+  rotateColors(50);  
+  delay(2);
+*/
+/*  
   int ledNumber = random(0, 4);
   int timeOn = random(800, 1200);
 //  oneFlash(ledNumber, timeOn);
   allFlash(timeOn);
   delay(50);
+*/
 }
 
 //--------------------------------------------------------------
+
+void fadeLed(int ledNumber)
+{
+  setGlobalRGBarray2randomBrightColor();
+  int ledPrimer = ledSet[ledNumber];
+
+  analogWrite(ledPrimer, globalRGBarray[0]);
+  analogWrite(ledPrimer+1, globalRGBarray[1]);
+  analogWrite(ledPrimer+2, globalRGBarray[2]);
+
+  delay(2000);
+ 
+}
 
 void oneFlash(int ledNumber, int delayTime)
 {
